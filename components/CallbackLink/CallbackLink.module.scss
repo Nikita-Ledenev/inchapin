@@ -1,0 +1,39 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.link {
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: $color-accent;
+  transition: transform 0.2s ease;
+}
+
+.link:active {
+  transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+
+  .link:active {
+    transform: none;
+  }
+}
+
+@include wide {
+  .link {
+    font-size: 15px;
+  }
+}
+
+@include laptop {
+  .link {
+    font-size: 12px;
+  }
+}

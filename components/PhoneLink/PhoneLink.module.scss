@@ -1,0 +1,85 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.phone {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  color: $color-text;
+}
+
+.phone:not(.round) {
+  position: relative;
+}
+
+.phone:not(.round)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+.phone:not(.round):hover::after,
+.phone:not(.round):focus-visible::after {
+  transform: scaleX(1);
+}
+
+.round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid $color-video-gray;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.08);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@include wide {
+  .phone {
+    font-size: 17px;
+  }
+}
+
+@include laptop {
+  .phone {
+    font-size: 13px;
+  }
+}
+
+@include mobile {
+  .round {
+    width: 40px;
+    height: 40px;
+    border-color: $color-accent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone:not(.round)::after,
+  .round {
+    transition: none;
+  }
+
+  .round:hover,
+  .round:focus-visible,
+  .round:active {
+    transform: none;
+  }
+}

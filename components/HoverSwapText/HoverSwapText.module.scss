@@ -1,0 +1,39 @@
+.trigger {
+  cursor: pointer;
+}
+
+.mask {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.line {
+  display: block;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.clone {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+.trigger:hover .line,
+.trigger:focus-visible .line {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    transition: none;
+  }
+
+  .trigger:hover .line,
+  .trigger:focus-visible .line {
+    transform: none;
+  }
+}

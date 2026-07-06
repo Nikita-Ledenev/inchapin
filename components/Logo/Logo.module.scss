@@ -1,0 +1,27 @@
+@use "mixins" as *;
+
+.logo {
+  display: block;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  img {
+    width: 156px;
+    height: auto;
+  }
+}
+
+@include wide {
+  .logo img {
+    width: 187px;
+  }
+}
+
+@include mobile {
+  .logo img {
+    width: 131px;
+  }
+}

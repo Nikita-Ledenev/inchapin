@@ -1,0 +1,61 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.teaser {
+  display: flex;
+  align-items: center;
+}
+
+.caption {
+  position: relative;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: $color-text;
+}
+
+.duration {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: $color-text;
+  opacity: 0.5;
+}
+
+.line {
+  flex: 1 1 auto;
+  height: 1px;
+  margin: 0 15px;
+  background: $color-video-gray;
+}
+
+@include wide {
+  .title,
+  .duration {
+    font-size: 18px;
+  }
+
+  .line {
+    margin: 0 20px;
+  }
+}
+
+@include below(1281px) {
+  .title {
+    font-size: 10px;
+  }
+
+  .duration {
+    font-size: 13px;
+  }
+}

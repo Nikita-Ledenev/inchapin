@@ -1,0 +1,61 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: $color-accent;
+
+  img {
+    width: 49px;
+    height: auto;
+  }
+}
+
+@include wide {
+  .badge {
+    width: 259px;
+    height: 259px;
+
+    img {
+      width: 63px;
+    }
+  }
+}
+
+@include laptop {
+  .badge {
+    width: 148px;
+    height: 148px;
+
+    img {
+      width: 35px;
+    }
+  }
+}
+
+@include tablet {
+  .badge {
+    width: 81px;
+    height: 81px;
+
+    img {
+      width: 19px;
+    }
+  }
+}
+
+@include mobile {
+  .badge {
+    width: 87px;
+    height: 87px;
+
+    img {
+      width: 20px;
+    }
+  }
+}

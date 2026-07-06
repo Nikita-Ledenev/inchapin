@@ -1,0 +1,264 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  padding: 60px 20px;
+  background: #ffffff;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.enter {
+  opacity: 0;
+}
+
+.enterActive {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.close {
+  position: fixed;
+  top: 60px;
+  right: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: #000000;
+  transition: transform 0.3s ease;
+}
+
+.close:hover,
+.close:focus-visible {
+  transform: rotate(90deg);
+}
+
+.form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 454px;
+  max-width: calc(100% - 40px);
+}
+
+.title {
+  margin-bottom: 50px;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 21.4px;
+}
+
+.disclaimer {
+  margin-top: 50px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  color: #000000;
+  opacity: 0.5;
+}
+
+.policyLink {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.3s ease;
+}
+
+.policyLink:hover,
+.policyLink:focus-visible {
+  text-decoration-color: transparent;
+}
+
+.submit {
+  align-self: center;
+  margin-top: 30px;
+  width: 228px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: $color-accent;
+  border-radius: 100px;
+  transition: transform 0.2s ease;
+}
+
+.submit:active {
+  transform: scale(0.97);
+}
+
+@include wide {
+  .form {
+    width: 587px;
+  }
+
+  .title {
+    margin-bottom: 60px;
+    font-size: 52px;
+  }
+
+  .fields {
+    gap: 26.8px;
+  }
+
+  .disclaimer {
+    margin-top: 60px;
+    font-size: 14px;
+    line-height: 1.43;
+  }
+
+  .submit {
+    width: 234px;
+    height: 63px;
+    font-size: 15px;
+  }
+}
+
+@include laptop {
+  .close {
+    top: 50px;
+    right: 50px;
+  }
+
+  .form {
+    width: 370px;
+  }
+
+  .title {
+    margin-bottom: 40px;
+    font-size: 28px;
+    color: $color-text;
+  }
+
+  .fields {
+    gap: 26.6px;
+  }
+
+  .disclaimer {
+    margin-top: 40px;
+    font-size: 11px;
+    line-height: 1.64;
+  }
+
+  .submit {
+    width: 170px;
+    height: 54px;
+  }
+}
+
+@include tablet {
+  .close {
+    top: 40px;
+    right: 40px;
+  }
+
+  .form {
+    width: 438px;
+  }
+
+  .title {
+    margin-bottom: 40px;
+    font-size: 28px;
+    color: $color-text;
+  }
+
+  .fields {
+    gap: 26.6px;
+  }
+
+  .disclaimer {
+    margin-top: 40px;
+    font-size: 11px;
+    line-height: 1.64;
+  }
+
+  .submit {
+    width: 170px;
+    height: 54px;
+  }
+}
+
+@include mobile {
+  .close {
+    top: 11px;
+    right: 11px;
+    width: 44px;
+    height: 44px;
+    padding: 9px;
+  }
+
+  .form {
+    width: 320px;
+    max-width: calc(100% - 40px);
+  }
+
+  .title {
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: $color-text;
+  }
+
+  .fields {
+    gap: 25.4px;
+  }
+
+  .disclaimer {
+    margin-top: 30px;
+    font-size: 12px;
+    line-height: 1.58;
+  }
+
+  .submit {
+    width: 170px;
+    height: 47px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enterActive,
+  .exitActive {
+    transition: none;
+  }
+
+  .close,
+  .submit {
+    transition: none;
+  }
+
+  .close:hover,
+  .close:focus-visible,
+  .submit:active {
+    transform: none;
+  }
+}

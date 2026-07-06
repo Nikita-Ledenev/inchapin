@@ -1,0 +1,27 @@
+@use "variables" as *;
+
+.viewport {
+  width: 100%;
+}
+
+.viewport[data-smooth-scroll="custom"] {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+}
+
+.viewport {
+  :global(.scrollbar-track-y) {
+    width: 6px;
+    background: transparent;
+  }
+
+  :global(.scrollbar-thumb-y) {
+    width: 6px;
+    background: rgba($color-text, 0.18);
+    border-radius: 3px;
+  }
+}

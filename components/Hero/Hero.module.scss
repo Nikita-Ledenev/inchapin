@@ -1,0 +1,147 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: 100px 40px 40px;
+}
+
+.photo {
+  position: relative;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.photoImage {
+  object-fit: cover;
+  transform-origin: center;
+  animation: hero-pan 30s ease-in-out infinite alternate;
+}
+
+@keyframes hero-pan {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08) translate(1.5%, -1.5%);
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.title {
+  flex-shrink: 0;
+  font-size: 0;
+  line-height: 0;
+
+  img {
+    width: 717px;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.subtitle {
+  max-width: 349px;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: $color-accent;
+}
+
+@include wide {
+  .hero {
+    padding: 131px 80px 80px;
+  }
+
+  .row {
+    margin-top: 50px;
+  }
+
+  .title img {
+    width: 854px;
+  }
+
+  .subtitle {
+    max-width: 420px;
+    font-size: 31px;
+  }
+}
+
+@include laptop {
+  .hero {
+    padding: 103px 30px 30px;
+  }
+
+  .row {
+    margin-top: 30px;
+  }
+
+  .title img {
+    width: 549px;
+  }
+
+  .subtitle {
+    max-width: 260px;
+    font-size: 19px;
+    line-height: 1.42;
+  }
+}
+
+@include tablet {
+  .hero {
+    padding: 123px 40px 40px;
+  }
+
+  .row {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 42px;
+    margin-top: 40px;
+  }
+
+  .title img {
+    width: 100%;
+  }
+}
+
+@include mobile {
+  .hero {
+    min-height: 100svh;
+    padding: 81px 20px 20px;
+  }
+
+  .row {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .title img {
+    width: 100%;
+  }
+
+  .subtitle {
+    max-width: 180px;
+    font-size: 13px;
+    line-height: 1.54;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photoImage {
+    animation: none;
+  }
+}

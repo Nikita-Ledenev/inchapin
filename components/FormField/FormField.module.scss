@@ -1,0 +1,144 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.field {
+  position: relative;
+  display: block;
+  padding-top: 20px;
+}
+
+.label {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: #000000;
+  pointer-events: none;
+  transform-origin: left top;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  will-change: transform;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 0 0 5px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #000000;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.field:focus-within .label,
+.filled .label {
+  transform: translateY(-19px) scale(0.6875);
+  opacity: 0.5;
+}
+
+.field:focus-within .label {
+  color: $color-accent;
+  opacity: 0.85;
+}
+
+.field:focus-within .input {
+  border-color: $color-accent;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.invalid .input {
+  border-color: $color-error;
+}
+
+.invalid .label {
+  color: $color-error;
+}
+
+.errorMessage {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: $color-error;
+}
+
+@include wide {
+  .field {
+    padding-top: 22px;
+  }
+
+  .label {
+    top: 22px;
+  }
+
+  .label,
+  .input {
+    font-size: 17px;
+  }
+
+  .field:focus-within .label,
+  .filled .label {
+    transform: translateY(-21px) scale(0.6471);
+  }
+}
+
+@include below(1281px) {
+  .field {
+    padding-top: 18px;
+  }
+
+  .label {
+    top: 18px;
+  }
+
+  .label,
+  .input {
+    font-size: 14px;
+  }
+
+  .field:focus-within .label,
+  .filled .label {
+    transform: translateY(-17px) scale(0.7857);
+  }
+}
+
+@include mobile {
+  .field {
+    padding-top: 14px;
+  }
+
+  .label {
+    top: 14px;
+  }
+
+  .label,
+  .input {
+    font-size: 11px;
+  }
+
+  .field:focus-within .label,
+  .filled .label {
+    transform: translateY(-13px) scale(0.8182);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .label,
+  .input {
+    transition: none;
+  }
+}

@@ -1,0 +1,114 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 14px;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background: rgba($color-accent, 0.84);
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.button:hover .lineTop,
+.button:focus-visible .lineTop {
+  transform: translateY(-4px);
+}
+
+.button:hover .lineBottom,
+.button:focus-visible .lineBottom {
+  transform: translateY(4px);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: $color-text;
+}
+
+@include wide {
+  .button {
+    gap: 15px;
+  }
+
+  .burger {
+    width: 38px;
+    height: 16px;
+  }
+
+  .button:hover .lineTop,
+  .button:focus-visible .lineTop {
+    transform: translateY(-5px);
+  }
+
+  .button:hover .lineBottom,
+  .button:focus-visible .lineBottom {
+    transform: translateY(5px);
+  }
+
+  .label {
+    font-size: 15px;
+  }
+}
+
+@include laptop {
+  .button {
+    gap: 10px;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+}
+
+@include tablet {
+  .button {
+    gap: 10px;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+}
+
+@include mobile {
+  .button {
+    padding: 15px 8px;
+    margin: -15px -8px;
+  }
+
+  .burger {
+    width: 29px;
+  }
+
+  .line {
+    background: $color-text;
+  }
+
+  .label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    transition: none;
+  }
+}

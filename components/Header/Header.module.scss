@@ -1,0 +1,142 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  padding: 0 40px;
+  background: $color-bg;
+  transition:
+    height 0.35s ease,
+    background-color 0.35s ease,
+    box-shadow 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+:global(html.is-scrolled) .header {
+  height: 76px;
+  background: rgba($color-bg, 0.82);
+  box-shadow: 0 6px 24px rgba($color-text, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.phoneRound {
+  display: none;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-left: auto;
+}
+
+@include wide {
+  .header {
+    height: 131px;
+    padding: 0 80px;
+  }
+
+  :global(html.is-scrolled) .header {
+    height: 96px;
+  }
+
+  .nav {
+    gap: 43px;
+  }
+}
+
+@include laptop {
+  .header {
+    height: 103px;
+    padding: 0 30px;
+  }
+
+  :global(html.is-scrolled) .header {
+    height: 78px;
+  }
+
+  .nav {
+    gap: 26px;
+  }
+
+  .contacts {
+    gap: 35px;
+  }
+}
+
+@include tablet {
+  .header {
+    height: 123px;
+  }
+
+  :global(html.is-scrolled) .header {
+    height: 96px;
+  }
+
+  .nav {
+    flex: 1 1 auto;
+    gap: 40px;
+  }
+
+  .nav > :last-child {
+    margin-left: auto;
+  }
+
+  .phoneRound {
+    display: block;
+  }
+
+  .contacts {
+    display: none;
+  }
+}
+
+@include mobile {
+  .header {
+    height: 81px;
+    padding: 0 20px;
+  }
+
+  :global(html.is-scrolled) .header {
+    height: 64px;
+  }
+
+  .nav {
+    flex: 1 1 auto;
+  }
+
+  .phoneRound {
+    display: block;
+    margin-left: auto;
+  }
+
+  .contacts {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    transition: none;
+  }
+}
